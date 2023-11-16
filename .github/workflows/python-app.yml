@@ -7,7 +7,7 @@ on:
 jobs:
   build:
 
-    runs-on: MAYANK
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
