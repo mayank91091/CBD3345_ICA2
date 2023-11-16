@@ -9,28 +9,34 @@ jobs:
 
     runs-on: self-hosted
 
+    services:
+      myapp:
+        image: docker.pkg.github.com/mayank91091/cbd3345_ica2/myapp-image:latest
+        ports:
+          - 8080:8080
+        options: --entrypoint "app.py" 
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run tests
-      run: |
-        pytest test_app.py
-    - name: Write test results to file
-      run: |
-        if [ $? -eq 0 ]; then
-          echo "All tests passed" > test_file.txt
-        else
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+
+     
+      - name: Run tests
+        run: |
+             pytest test_app.py
+      - name: Write test results to file
+        run: |
+          if [ $? -eq 0 ]; then
+           echo "All tests passed" > test_file.txt
+            else
           echo "Tests failed" > test_file.txt
-        fi
-    - name: Archive test file
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-file
-        path: test_file.txt
+            fi
+      - name: Archive test file
+        uses: actions/upload-artifact@v2
+        with:
+         name: test-file
+         path: test_file.txt
