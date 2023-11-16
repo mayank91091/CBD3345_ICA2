@@ -25,11 +25,6 @@ jobs:
     - name: Create test file
       run: |
         echo "Test file content" > test_file.txt
-    - name: Archive test reports
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-reports
-        path: tests/reports/
     - name: Archive test file
       uses: actions/upload-artifact@v2
       with:
