@@ -20,4 +20,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run tests
-      uses: run-tests
+      uses: ./.github/workflows
+      with:
+        workflow: run-tests.yml
