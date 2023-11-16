@@ -20,6 +20,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run tests
-      uses: ./.github/workflows
+      run: |
+        pytest test_app.py
+    - name: Write test results to file
+      run: |
+        if [ $? -eq 0 ]; then
+          echo "All tests passed" > test_file.txt
+        else
+          echo "Tests failed" > test_file.txt
+        fi
+    - name: Archive test file
+      uses: actions/upload-artifact@v2
       with:
-        workflow: run-tests.yml
+        name: test-file
+        path: test_file.txt
