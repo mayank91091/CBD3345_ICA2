@@ -6,7 +6,11 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, Linux_runner]
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        runner: [Linux_runner,Windows_runner2]
+
 
     services:
       myapp:
