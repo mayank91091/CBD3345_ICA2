@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, Windows_runner]
+    runs-on: [self-hosted, Linux_runner]
 
     services:
       myapp:
