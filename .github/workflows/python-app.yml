@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, inclass]
+    runs-on: [self-hosted, Windows_runner]
 
     services:
       myapp:
